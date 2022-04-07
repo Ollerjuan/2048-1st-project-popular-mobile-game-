@@ -12,6 +12,16 @@ of the highest number in order to receive an even higher value to attain a highe
 - as a user, I will need to create scoreboard that doubles what score was swiped 
 - as a user, I will like to end the game when no spaces are open
 
+# MVP Goals
+
+- as a user I would like to for everything to flow smoothly when sliding accross the board
+- as a user I would like for the math portion to be correct everytime
+- as a user I would like to know make my Start button be the reset button as well
+
+# Stretch Goals
+
+- I would like to design the game as pictured above if i have time
+
 
 STEP 1
 
@@ -34,3 +44,5 @@ STEP 3
 IF the player cannot increase the score and has no spaces left to swipe, the game is OVER!!
 
 <img width="587" alt="Screen Shot 2022-04-06 at 12 26 40 PM" src="https://user-images.githubusercontent.com/101987493/162033102-5b0365d9-bee6-44db-97cc-cd5ae24d17a1.png">
+
+
