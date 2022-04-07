@@ -1,0 +1,46 @@
+body{
+    background: #36454F;
+}
+h1 {
+    text-align: center;
+    position: center;
+    color: gold;
+    font-size: 80px;
+
+}
+button {
+    padding: 15px;
+    font-size: 18px;
+    color: red;
+    background-color: black;
+    position: center;
+
+    
+}
+.container {
+    width: 100vw;
+    height: 554vh;
+    display: grid;
+    justify-content: center;
+    padding-bottom: 100%;
+ }
+
+.cell {
+    width: 400px;
+    height: 400px;
+    /* background-color: rgb(1,2,3,9);  */
+    color: rgb(0, 255, 251); 
+    text-align: center; 
+    display: flex;
+    flex-wrap: wrap; 
+   
+  
+}
+.cell div{
+    width: 100px;
+    height: -100px;
+    background-color: rgb(9,4,3,0);
+    font-size: 50px;
+    display: grid; 
+    text-align: center;
+}

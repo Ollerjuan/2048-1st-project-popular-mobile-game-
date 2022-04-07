@@ -1,9 +1,16 @@
 // I will first pull all the values that i will be using from the html 
-
-
-
-
-
+const game = document.querySelectorAll('.container')
+const gridDisplay = document.querySelector('.cell')
+const start = document.querySelector('.new')
+const resultDisplay = document.getElementById('result')
+const length = 4
+const width = 4
+let cells = [
+    [0,0,0,0],
+    [0,0,0,0],
+    [0,0,0,0],
+    [0,0,0,0],
+];
 
 
 // create a function for the start button to allow the user to begin playing 
@@ -11,22 +18,44 @@
 
 
 
+// get numbers to generate on the grid square first 
 
-// create my first array with the frst two numbers that can be used to start and countiue the game (2 & 4)
+function newGame(){
+    for (let i=0; i < length*width; i++){
+            cell = document.createElement('div')
+            cell.innerHTML = 0
+            gridDisplay.appendChild(cell)
+            cells.push(cell)
+        }
 
-
-
-
-
-
-
-
-
-
-
-// create my function that will allow the numbers to double when they are swipped into each other but only if they are the same number 
+}
+console.log(newGame())
 
 
+// create my an array with the frst two numbers that can be used to start and countiue the game (2 & 4)
+
+
+
+
+// allow those number be swiped left, right up or down using  keyboard function 
+
+
+
+
+// document.addEventListener('keyup' control)
+
+
+
+
+
+
+
+// create my function that will allow the numbers to double when they are swipped into each other but only 
+//if they are the same number 
+
+
+
+// stop number from combing if they are not the same #
 
 
 
