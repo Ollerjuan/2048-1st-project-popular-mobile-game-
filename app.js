@@ -27,12 +27,20 @@ function newGame(){
             gridDisplay.appendChild(cell)
             cells.push(cell)
         }
+// create my an array with the frst two numbers that can be used to start and countiue the game (2 or/& 4)
+
+        function generateNewNumber() {
+            let randomNumber = Math.floor(Math.random() * cells.length);
+            if (cells[randomNumber].innerHTML == 0){
+            cells[randomNumber].innerHTML =  2;
+            } else generateNewNumber()
+        }
+        console.log(generateNewNumber())
 
 }
 console.log(newGame())
 
 
-// create my an array with the frst two numbers that can be used to start and countiue the game (2 & 4)
 
 
 
