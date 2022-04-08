@@ -3,7 +3,7 @@ const game = document.querySelectorAll('.container')
 const gridDisplay = document.querySelector('.cell')
 const start = document.querySelector('.new')
 const resultDisplay = document.getElementById('result')
-const length = 4
+const lengths = 4
 const width = 4
 let cells = [
     [0,0,0,0],
@@ -21,7 +21,7 @@ let cells = [
 // get numbers to generate on the grid square first 
 
 function newGame(){
-    for (let i=0; i < length*width; i++){
+    for (let i=0; i < lengths*width; i++){
             cell = document.createElement('div')
             cell.innerHTML = 0
             gridDisplay.appendChild(cell)
@@ -32,10 +32,19 @@ function newGame(){
         function generateNewNumber() {
             let randomNumber = Math.floor(Math.random() * cells.length);
             if (cells[randomNumber].innerHTML == 0){
-            cells[randomNumber].innerHTML =  2;
+            cells[randomNumber].innerHTML = 2 ;
             } else generateNewNumber()
         }
-        console.log(generateNewNumber())
+        console.log(generateNewNumber(2))
+
+        function generateNew() {
+            let randomNumber = Math.floor(Math.random() * cells.length);
+            if (cells[randomNumber].innerHTML == 0){
+            cells[randomNumber].innerHTML = 4 ;
+            } else generateNewNumber()
+        }
+        
+        console.log(generateNew(4))
 
 }
 console.log(newGame())
@@ -46,6 +55,8 @@ console.log(newGame())
 
 
 // allow those number be swiped left, right up or down using  keyboard function 
+
+
 
 
 
