@@ -23,7 +23,7 @@ let cells = [
 function newGame(){
     for (let i=0; i < lengths*width; i++){
             cell = document.createElement('div')
-            cell.innerHTML = 0
+            cell.innerHTML = ''
             gridDisplay.appendChild(cell)
             cells.push(cell)
         }
