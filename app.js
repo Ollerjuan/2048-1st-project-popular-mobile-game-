@@ -28,7 +28,7 @@ let cells = []
 // get numbers to generate on the grid square first 
 
 function newGame(){
-    for (let i = 0; i < 4 * 4; i++){
+    for (let i = 0; i < lengths * width; i++){
             cell = document.createElement('div')
             cell.innerHTML = ''
             allCells.appendChild(cell)
@@ -57,10 +57,6 @@ function newGame(){
 console.log(newGame())
 generateNewNumber()
 generateNew()
-
-
-
-
 
 
 // allow those number be swiped left, right up or down using  keyboard function 
@@ -126,9 +122,32 @@ function swipeLeft(){
 swipeLeft()
 
 
-// swipeDown
- 
-   
+//swipeDown
+function swipeDown(){
+    for (let i = 0; i < 4; i++){
+       //checking for number going down the column
+        let rowOne = cells[i].innerHTML
+            let rowTwo = cells[i+width].innerHTML
+            let rowThree = cells[i+width*2].innerHTML
+            let rowFour = cells[i+width*3].innerHTML
+        let column = [parseInt(rowOne),parseInt(rowTwo),
+            parseInt(rowThree),parseInt(rowFour)]
+
+ //Create filter that will check for empty cells in the column
+    let filterWidth = column.filter(num => num)
+    let result = 4 - filterWidth.length
+    let none = Array (result).fill('')
+
+    // using a concatenate to join none and filter length 
+    let newWidth = none.concat(filterWidth)
+         cells[i].innerHTML = newWidth[0]
+        cells[i+width].innerHTML = newWidth[1]
+        cells[i+width*2].innerHTML = newWidth[2]
+         cells[i+width*3].innerHTML = newWidth[3]
+}
+}
+console.log(swipeDown())
+
 // create my function that will allow the numbers to double when they are swipped into each other but only 
 //if they are the same number 
 
@@ -142,7 +161,7 @@ swipeLeft()
         }
     }
 
-  
+
 
 
 
@@ -157,7 +176,7 @@ swipeLeft()
     }
 
 document.addEventListener('keyup', control)
-// generating the key function to do mulitple functions once the key is let go
+// generating the key function to do mulitple functions once the key is let go at keyUp
     function keyRight(){
         swipeRight()
         combineNumbers()
@@ -170,10 +189,8 @@ document.addEventListener('keyup', control)
         combineNumbers()
         swipeLeft()
         generateNewNumber()
-
     }
-    
-
+ 
 
 
 // create win game once the player has reach 2048 
