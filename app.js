@@ -5,6 +5,7 @@ const start = document.querySelector('.new')
 const resultDisplay = document.getElementById('result')
 const lengths = 4
 const width = 4
+let emptyList = []
 let cells = []
 // [
 //     [0,0,0,0],
@@ -14,8 +15,7 @@ let cells = []
 // ];
 
 
-// create a addeventlistener for the start button to allow the user to begin playing 
-
+// create a addeventlistener for the new Game button to allow the user to restart
 
 start.addEventListener('click', () => {
     cells.forEach(square => {
@@ -196,13 +196,21 @@ console.log(swipeDown())
             let total = parseInt(cells[i].innerHTML) + parseInt(cells[i+width].innerHTML)
             cells[i+width].innerHTML = ''
             cells[i].innerHTML = total
+            return false
             }
-        }
-    }
+      } 
+}
+function gmaeOver(){
 
+    if (filterWidth.length){
+
+    }
+}
 
 //create function that allows players to swiper using keyboard  
-    function control(e){
+    
+
+function control(e){
         if(e.keyCode === 37){
         keyLeft()
         } else if(e. keyCode === 39){
@@ -246,7 +254,12 @@ document.addEventListener('keyup', control)
 
 
 // create win game once the player has reach 2048 
+// let user = ['player']
+// let gameOver = false
 
+
+// if (playerScore === 2048)
+//     gameOver = true;
 
 
 
