@@ -16,7 +16,7 @@ of the highest number in order to receive an even higher value to attain a highe
 
 - as a user I would like to for everything to flow smoothly when sliding accross the board
 - as a user I would like for the math portion to be correct everytime
-- as a user I would like to know make my Start button be the reset button as well
+- as a user I would like to  make my Start button be the reset button as well
 
 # Stretch Goals
 

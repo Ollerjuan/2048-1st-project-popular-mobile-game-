@@ -3,7 +3,6 @@ const game = document.querySelectorAll('.container')
 const allCells = document.querySelector('.cell')
 const start = document.querySelector('.new')
 const resultDisplay = document.getElementById('result')
-let modifier = 5;
 const lengths = 4
 const width = 4
 let cells = []
@@ -15,14 +14,17 @@ let cells = []
 // ];
 
 
-// create a function for the start button to allow the user to begin playing 
+// create a addeventlistener for the start button to allow the user to begin playing 
 
-// function newGame() {
-//     window.start = new Game(4);
-//     window.start.initialize();
-//    }
-// console.log(newGame);
-   
+
+start.addEventListener('click', () => {
+    cells.forEach(square => {
+        square.innerHTML = '';
+        gameActive = true;
+     
+
+    })
+}) 
 
 
 // get numbers to generate on the grid square first 
@@ -53,10 +55,10 @@ function newGame(){
             } else generateNew()
         }
         
-        
+     
 console.log(newGame())
-generateNewNumber()
 generateNew()
+generateNewNumber() 
 
 
 // allow those number be swiped left, right up or down using  keyboard function 
@@ -148,6 +150,32 @@ function swipeDown(){
 }
 console.log(swipeDown())
 
+//swipUp
+function swipeUp(){
+    for (let i = 0; i < 4; i++){
+       //checking for number going down the column
+        let rowOne = cells[i].innerHTML
+            let rowTwo = cells[i+width].innerHTML
+            let rowThree = cells[i+width*2].innerHTML
+            let rowFour = cells[i+width*3].innerHTML
+        let column = [parseInt(rowOne),parseInt(rowTwo),
+            parseInt(rowThree),parseInt(rowFour)]
+
+ //Create filter that will check for empty cells in the column
+    let filterWidth = column.filter(num => num)
+    let result = 4 - filterWidth.length
+    let none = Array (result).fill('')
+
+    // using a concatenate to join none and filter length 
+    let newWidth = filterWidth.concat(none)
+         cells[i].innerHTML = newWidth[0]
+        cells[i+width].innerHTML = newWidth[1]
+        cells[i+width*2].innerHTML = newWidth[2]
+         cells[i+width*3].innerHTML = newWidth[3]
+}
+}
+console.log(swipeDown())
+
 // create my function that will allow the numbers to double when they are swipped into each other but only 
 //if they are the same number 
 
@@ -161,8 +189,16 @@ console.log(swipeDown())
         }
     }
 
-
-
+    // create a function that reads the numbers down the column and allows them to combine if they are similar but does look past the 16th column 
+    function combineDown(){
+        for (let i = 0; i < 12; i++ ){
+            if (cells[i].innerHTML === cells[i+width].innerHTML){
+            let total = parseInt(cells[i].innerHTML) + parseInt(cells[i+width].innerHTML)
+            cells[i+width].innerHTML = ''
+            cells[i].innerHTML = total
+            }
+        }
+    }
 
 
 //create function that allows players to swiper using keyboard  
@@ -171,8 +207,11 @@ console.log(swipeDown())
         keyLeft()
         } else if(e. keyCode === 39){
             keyRight()
-        } 
-
+        } else if(e. keyCode === 40){
+            keyDown()
+        } else if(e.keyCode === 38){
+            keyUp()
+        }
     }
 
 document.addEventListener('keyup', control)
@@ -188,6 +227,19 @@ document.addEventListener('keyup', control)
         swipeLeft()
         combineNumbers()
         swipeLeft()
+        generateNewNumber()
+    }   
+    function keyUp(){
+        swipeUp()
+        combineDown()
+        swipeUp()
+        generateNewNumber()
+    }
+    
+    function keyDown(){
+        swipeDown()
+        combineDown()
+        swipeDown()
         generateNewNumber()
     }
  
