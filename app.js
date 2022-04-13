@@ -37,7 +37,7 @@ function newGame(){
             let randomNumber = Math.floor(Math.random() * cells.length);
             if (cells[randomNumber].innerHTML == 0){
             cells[randomNumber].innerHTML = 2 ;
-            gameOver()
+       
             } else generateNewNumber()
         }
         
@@ -48,7 +48,7 @@ function newGame(){
             cells[randomNumber].innerHTML = 4 ;
           
             } else generateNew()
-            gameLost()
+            
         }  
     }
         
@@ -58,13 +58,13 @@ console.log(newGame())
 generateNew()
 generateNewNumber() 
 
-// generate game over function 
-function gameOver(){
-    if(player.filter((num) => num === '').length === ''){
-              return true;
-            }
-            return false;
-        }
+//generate game over function 
+// function gameOver(){
+//     if(player.filter((num) => num === '').length === ''){
+//               return true;
+//             }
+//             return false;
+//         }
 
 
 
@@ -252,4 +252,3 @@ document.addEventListener('keyup', control)
         generateNewNumber()
     }
  
-
