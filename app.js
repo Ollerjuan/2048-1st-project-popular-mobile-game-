@@ -5,14 +5,8 @@ const start = document.querySelector('.new')
 const resultDisplay = document.getElementById('result')
 const lengths = 4
 const width = 4
-let emptyList = []
+let player = null;
 let cells = []
-// [
-//     [0,0,0,0],
-//     [0,0,0,0],
-//     [0,0,0,0],
-//     [0,0,0,0],
-// ];
 
 
 // create a addeventlistener for the new Game button to allow the user to restart
@@ -25,7 +19,6 @@ start.addEventListener('click', () => {
 
     })
 }) 
-
 
 // get numbers to generate on the grid square first 
 
@@ -44,21 +37,35 @@ function newGame(){
             let randomNumber = Math.floor(Math.random() * cells.length);
             if (cells[randomNumber].innerHTML == 0){
             cells[randomNumber].innerHTML = 2 ;
+            gameOver()
             } else generateNewNumber()
         }
         
 
         function generateNew() {
-            let randomNumber = Math.floor(Math.random() * cells.length);
+            let randomNumber = Math.floor(Math.random() * cells.length);{
             if (cells[randomNumber].innerHTML == 0){
             cells[randomNumber].innerHTML = 4 ;
+          
             } else generateNew()
-        }
+            gameLost()
+        }  
+    }
+        
         
      
 console.log(newGame())
 generateNew()
 generateNewNumber() 
+
+// generate game over function 
+function gameOver(){
+    if(player.filter((num) => num === '').length === ''){
+              return true;
+            }
+            return false;
+        }
+
 
 
 // allow those number be swiped left, right up or down using  keyboard function 
@@ -132,7 +139,7 @@ function swipeDown(){
             let rowTwo = cells[i+width].innerHTML
             let rowThree = cells[i+width*2].innerHTML
             let rowFour = cells[i+width*3].innerHTML
-        let column = [parseInt(rowOne),parseInt(rowTwo),
+            let column = [parseInt(rowOne),parseInt(rowTwo),
             parseInt(rowThree),parseInt(rowFour)]
 
  //Create filter that will check for empty cells in the column
@@ -185,8 +192,8 @@ console.log(swipeDown())
                 let total = parseInt(cells[i].innerHTML) + parseInt(cells[i+1].innerHTML)
                     cells[i+1].innerHTML = ''
                     cells[i].innerHTML = total
-            }
-        }
+            } 
+        }       
     }
 
     // create a function that reads the numbers down the column and allows them to combine if they are similar but does look past the 16th column 
@@ -196,28 +203,22 @@ console.log(swipeDown())
             let total = parseInt(cells[i].innerHTML) + parseInt(cells[i+width].innerHTML)
             cells[i+width].innerHTML = ''
             cells[i].innerHTML = total
-            return false
             }
-      } 
-}
-function gmaeOver(){
-
-    if (filterWidth.length){
-
+        }
     }
-}
+
+
 
 //create function that allows players to swiper using keyboard  
     
-
 function control(e){
-        if(e.keyCode === 37){
-        keyLeft()
-        } else if(e. keyCode === 39){
-            keyRight()
-        } else if(e. keyCode === 40){
+        if(e.key === 'ArrowRight'){
+        keyRight()
+        } else if(e. key === 'ArrowLeft'){
+            keyLeft()
+        } else if(e. key === 'ArrowDown'){
             keyDown()
-        } else if(e.keyCode === 38){
+        } else if(e.key === 'ArrowUp'){
             keyUp()
         }
     }
@@ -252,17 +253,3 @@ document.addEventListener('keyup', control)
     }
  
 
-
-// create win game once the player has reach 2048 
-// let user = ['player']
-// let gameOver = false
-
-
-// if (playerScore === 2048)
-//     gameOver = true;
-
-
-
-
-
-// create an end game if the player does not have anymore space left to swipe and has not reached 2048
