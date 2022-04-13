@@ -5,7 +5,6 @@ const start = document.querySelector('.new')
 const resultDisplay = document.getElementById('result')
 const lengths = 4
 const width = 4
-let player = null;
 let cells = []
 
 
@@ -15,7 +14,6 @@ start.addEventListener('click', () => {
     cells.forEach(square => {
         square.innerHTML = '';
         gameActive = true;
-     
 
     })
 }) 
@@ -37,7 +35,7 @@ function newGame(){
             let randomNumber = Math.floor(Math.random() * cells.length);
             if (cells[randomNumber].innerHTML == 0){
             cells[randomNumber].innerHTML = 2 ;
-       
+            
             } else generateNewNumber()
         }
         
@@ -48,24 +46,22 @@ function newGame(){
             cells[randomNumber].innerHTML = 4 ;
           
             } else generateNew()
-            
         }  
     }
-        
-        
      
 console.log(newGame())
 generateNew()
 generateNewNumber() 
 
-//generate game over function 
-// function gameOver(){
-//     if(player.filter((num) => num === '').length === ''){
-//               return true;
-//             }
-//             return false;
-//         }
 
+// generate win function by creating a loop
+    function winner(){
+        for(let i = 0; i < length * width; i++){
+            if (cells[i]=== 2048){
+                alert("You WIN")
+            }
+        }
+    }
 
 
 // allow those number be swiped left, right up or down using  keyboard function 
@@ -74,7 +70,7 @@ generateNewNumber()
 function swipeRight(){
     for (let i = 0; i < 16; i++){
         if (i % 4 === 0){
-    // naming each row to let the loop run
+// naming each row to let the loop run
             let rowOne = cells[i].innerHTML
                 let rowTwo = cells[i+1].innerHTML
                 let rowThree = cells[i+2].innerHTML
@@ -91,10 +87,8 @@ function swipeRight(){
 
 // using a concatenate to join none and filter length 
                     let checkRows = none.concat(filterLengths)
-                        cells[i].innerHTML = checkRows[0]
-                        cells[i+1].innerHTML = checkRows[1]
-                        cells[i+2].innerHTML = checkRows[2]
-                        cells[i+3].innerHTML = checkRows[3]
+                        cells[i].innerHTML = checkRows[0], cells[i+1].innerHTML = checkRows[1]
+                         cells[i+2].innerHTML = checkRows[2], cells[i+3].innerHTML = checkRows[3]
     }
 }
 }
@@ -103,7 +97,7 @@ swipeRight()
 function swipeLeft(){
     for (let i = 0; i < 16; i++){
         if (i % 4 === 0){
-    // naming each row to let the loop run and store number
+ // naming each row to let the loop run and store number
             let rowOne = cells[i].innerHTML
             let rowTwo = cells[i+1].innerHTML
             let rowThree = cells[i+2].innerHTML
@@ -120,10 +114,8 @@ function swipeLeft(){
 
 // using a concatenate to join none and filter length 
                     let checkRows = filterLengths.concat(none)
-                        cells[i].innerHTML = checkRows[0]
-                         cells[i+1].innerHTML = checkRows[1]
-                         cells[i+2].innerHTML = checkRows[2]
-                         cells[i+3].innerHTML = checkRows[3]
+                        cells[i].innerHTML = checkRows[0], cells[i+1].innerHTML = checkRows[1]
+                         cells[i+2].innerHTML = checkRows[2], cells[i+3].innerHTML = checkRows[3]
         }
     }   
 }
@@ -149,10 +141,8 @@ function swipeDown(){
 
     // using a concatenate to join none and filter length 
     let newWidth = none.concat(filterWidth)
-         cells[i].innerHTML = newWidth[0]
-        cells[i+width].innerHTML = newWidth[1]
-        cells[i+width*2].innerHTML = newWidth[2]
-         cells[i+width*3].innerHTML = newWidth[3]
+         cells[i].innerHTML = newWidth[0], cells[i+width].innerHTML = newWidth[1]
+        cells[i+width*2].innerHTML = newWidth[2], cells[i+width*3].innerHTML = newWidth[3]
 }
 }
 console.log(swipeDown())
@@ -175,10 +165,8 @@ function swipeUp(){
 
     // using a concatenate to join none and filter length 
     let newWidth = filterWidth.concat(none)
-         cells[i].innerHTML = newWidth[0]
-        cells[i+width].innerHTML = newWidth[1]
-        cells[i+width*2].innerHTML = newWidth[2]
-         cells[i+width*3].innerHTML = newWidth[3]
+         cells[i].innerHTML = newWidth[0], cells[i+width].innerHTML = newWidth[1]
+        cells[i+width*2].innerHTML = newWidth[2], cells[i+width*3].innerHTML = newWidth[3]
 }
 }
 console.log(swipeDown())
@@ -193,7 +181,9 @@ console.log(swipeDown())
                     cells[i+1].innerHTML = ''
                     cells[i].innerHTML = total
             } 
-        }       
+            winner()
+        } 
+
     }
 
     // create a function that reads the numbers down the column and allows them to combine if they are similar but does look past the 16th column 
@@ -204,6 +194,7 @@ console.log(swipeDown())
             cells[i+width].innerHTML = ''
             cells[i].innerHTML = total
             }
+            winner()
         }
     }
 
@@ -211,6 +202,7 @@ console.log(swipeDown())
 
 //create function that allows players to swiper using keyboard  
     
+
 function control(e){
         if(e.key === 'ArrowRight'){
         keyRight()
@@ -252,3 +244,4 @@ document.addEventListener('keyup', control)
         generateNewNumber()
     }
  
+
