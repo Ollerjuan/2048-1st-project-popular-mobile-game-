@@ -1,4 +1,4 @@
-// I will first pull all the values that i will be using from the html 
+// I will first pull all the values that i will be using from the html (using bootstrap)
 const game = document.querySelectorAll('.container')
 const allCells = document.querySelector('.cell')
 const start = document.querySelector('.new')
@@ -21,6 +21,7 @@ start.addEventListener('click', () => {
 // get numbers to generate on the grid square first 
 
 function newGame(){
+    //used length * width in for loop to run through the amount of tiles
     for (let i = 0; i < lengths * width; i++){
             cell = document.createElement('div')
             cell.innerHTML = ''
@@ -31,7 +32,8 @@ function newGame(){
     }
 
 // create 2 functions that generate two and four randomly but will always have 2 numbers generate at the start of the game and only one during the game
-        function generateNewNumber() {
+// generates a 2 after each swipe    
+function generateNewNumber() {
             let randomNumber = Math.floor(Math.random() * cells.length);
             if (cells[randomNumber].innerHTML == 0){
             cells[randomNumber].innerHTML = 2 ;
@@ -39,7 +41,7 @@ function newGame(){
             } else generateNewNumber()
         }
         
-
+// randomly generates 4 after each swipe
         function generateNew() {
             let randomNumber = Math.floor(Math.random() * cells.length);{
             if (cells[randomNumber].innerHTML == 0){
@@ -66,7 +68,7 @@ generateNewNumber()
 
 // allow those number be swiped left, right up or down using  keyboard function 
 
-// creating a loop 
+// creating a for loop 
 function swipeRight(){
     for (let i = 0; i < 16; i++){
         if (i % 4 === 0){
@@ -75,7 +77,7 @@ function swipeRight(){
                 let rowTwo = cells[i+1].innerHTML
                 let rowThree = cells[i+2].innerHTML
                 let rowFour = cells[i+3].innerHTML
-// using parseInt to in order to convert string to an integer 
+// using parseInt in order to convert string to an integer 
         let length = [parseInt(rowOne),parseInt(rowTwo),
             parseInt(rowThree),parseInt(rowFour)]
 
@@ -85,12 +87,12 @@ function swipeRight(){
                 let result = 4- filterLengths.length
                 let none = Array(result).fill('')
 
-// using a concatenate to join none and filter length 
+// using a concatenate (variable to string) to join none and filter length 
                     let checkRows = none.concat(filterLengths)
                         cells[i].innerHTML = checkRows[0], cells[i+1].innerHTML = checkRows[1]
                          cells[i+2].innerHTML = checkRows[2], cells[i+3].innerHTML = checkRows[3]
+        }
     }
-}
 }
 swipeRight()
 
@@ -201,7 +203,6 @@ console.log(swipeDown())
 
 
 //create function that allows players to swiper using keyboard  
-    
 
 function control(e){
         if(e.key === 'ArrowRight'){
